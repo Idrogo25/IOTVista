@@ -1,0 +1,19 @@
+@import './base.css';
+body{
+  padding:20px;
+  text-align: center;
+}
+
+a,
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+  padding: 3px;
+}
+.imagen{
+  text-align: center;
+  width:400px;
+  height: 500px;
+}
+
