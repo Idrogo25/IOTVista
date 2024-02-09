@@ -3,7 +3,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-import { getDataChanged_document,  getDataChanged,getDataDocument,updateData} from '@/firebase'; // Asegúrate de ajustar la ruta al archivo de Firebase
+import { getDataChanged_document,  getDataChanged,getDataDocument,updateData} from '@/firebase'; 
 
 const route = useRoute();
 const elementoId = ref(route.params.id);
@@ -54,9 +54,7 @@ const recuperar=(snap)=>{
 onMounted(async () => {
   try {
     const id = elementoId.value;
-   // const espacioId=route.params.id
     const prueba = await getDataChanged("espacios", callback);
-    // Intenta obtener el documento del sensor
     const sensorDocumento = await getDataChanged_document(`espacios`, espacio, recuperar);
     if(prueba.exists()){
       console.log("El espacio existe");
@@ -69,7 +67,7 @@ onMounted(async () => {
       nombre.value = sensorData.nombre;
       estado.value = sensorData.estado;
     } else {
-      // Si no se encuentra en Sensores, busca en Ejecutores
+      // Si no se encuentra en Sensores, se busca en Ejecutores
       const ejecutorDocumento = await getDataChanged_document("Ejecutores", id);
       
       if (ejecutorDocumento.exists()) {
